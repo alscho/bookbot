@@ -19,8 +19,7 @@ def sort_on(dict):
 def sort_dict(char_dict):
     char_stats = []
     for k in char_dict:
-        if k.isalpha():
-            char_stats.append({"name": f"{k}", "num": char_dict[k]})
+        char_stats.append({"name": f"{k}", "num": char_dict[k]})
     
     char_stats.sort(reverse=True, key=sort_on)
 
@@ -35,6 +34,8 @@ def print_report(num_words, char_dict, filepath):
     print(f"{num_words} words found in the document")
 
     for place in sorted:
+        if not place["name"].isalpha():
+            continue
         print(f"The '{place["name"]}' character was found {place["num"]} times")
     
     print(f"--- End report ---")
